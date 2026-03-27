@@ -1,8 +1,14 @@
 import ToDoList from "../../components/ToDoListComponent/ToDoList"
+import {Link} from "react-router-dom";
+
 
 function ToDoListPage(){
     return(
-        <ToDoList/>
+        <>
+            <Link to="/"><button>Torna indietro</button></Link>
+            <ToDoList/>
+        </>
+        
     )
 }
 

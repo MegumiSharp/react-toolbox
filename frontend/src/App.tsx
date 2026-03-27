@@ -1,14 +1,16 @@
 import './App.css'
-import ColorPickerPage from './pages/ColorPickerPage/ColorPickerPage';
-import ToDoListPage from './pages/ToDoListPage/ToDoListPage';
+import {Link} from "react-router-dom";
 
 
 
 function App() {
   return (
     <>
-      <ColorPickerPage/>
-      <ToDoListPage/>
+      <div>
+        hello world
+        <Link to={"/todolist"}><button>Todo list</button></Link>
+        <Link to={"/colorpicker"}><button>ColorPicker</button></Link>
+      </div>
     </> 
   )
 }
