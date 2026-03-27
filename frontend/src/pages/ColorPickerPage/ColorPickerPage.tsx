@@ -1,9 +1,9 @@
 import React, {useMemo, useState } from "react"
 
-import { hslToHex, rgbToHsl } from "../utils/Utils.ts"
+import { hslToHex, rgbToHsl } from "../../utils/Utils.ts"
 
-import CopyColor from "../components/ColorPickerComponent/CopyColor"
-import ColorPicker from "../components/ColorPickerComponent/ColorPicker"
+import CopyColor from "../../components/ColorPickerComponent/CopyColor.tsx"
+import ColorPicker from "../../components/ColorPickerComponent/ColorPicker.tsx"
 import styles from './ColorPickerPage.module.css'
 
 

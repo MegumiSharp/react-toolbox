@@ -11,6 +11,8 @@ Partiamo da un momento di teoria dei colori. Il tipo di colore che useremo è HS
 
 Il motivo per cui HSL è preferibile a RGB o HEX per questo tipo di implementazione è che i suoi tre valori mappano direttamente a come l'occhio umano percepisce il colore — è intuitivo ragionare in termini di "quanto è vivido" e "quanto è chiaro" piuttosto che in termini di quantità di rosso, verde e blu. Questo lo rende ideale per costruire un'interfaccia dove l'utente esplora il colore visivamente.
 
+
+
 ---
 
 ### Implementazione barra HUE
