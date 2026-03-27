@@ -43,10 +43,6 @@ function ToDoList(){
     }, [taskList])
 
 
-
-
-
-
     const taskCompleted = taskList.filter( task=> task.completed).length
 
     const numberOfTaskActive = taskList.length - taskCompleted
@@ -144,8 +140,6 @@ function ToDoList(){
         setTaskList(updatedTasks)
     }
 
-
-    
     return (
         <div className={styles.container}>
             <div className={styles.taskFrame}>

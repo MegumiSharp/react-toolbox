@@ -1,11 +1,11 @@
 import ToDoList from "../../components/ToDoListComponent/ToDoList"
-import {Link} from "react-router-dom";
+import Header from "../../components/HeaderComponent/Header";
 
 
 function ToDoListPage(){
     return(
         <>
-            <Link to="/"><button>Torna indietro</button></Link>
+            <Header title="To-Do List Tool"/>
             <ToDoList/>
         </>
         

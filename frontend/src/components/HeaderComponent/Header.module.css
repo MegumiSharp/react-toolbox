@@ -1,0 +1,52 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+    width: 100vw;
+    margin-bottom: 120px;
+
+    
+}
+
+.titleOptionContainer{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+   gap: 16px;
+}
+
+.homepageBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    transition: opacity 400ms ease, transform 200ms ease, color 200ms ease;
+    font-family: 'Manrope';
+    color: #E7E5E5;
+
+    text-decoration: none;
+    border: none;
+
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+
+
+.homepageBtn:active {
+    opacity: 1;
+    transform: translateY(2px);
+}
+
+
+.homepageBtn:hover{
+    opacity: 0.75;
+}

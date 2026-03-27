@@ -4,6 +4,7 @@ import { hslToHex, rgbToHsl } from "../../utils/Utils.ts"
 
 import CopyColor from "../../components/ColorPickerComponent/CopyColor.tsx"
 import ColorPicker from "../../components/ColorPickerComponent/ColorPicker.tsx"
+import Header from "../../components/HeaderComponent/Header";
 import styles from './ColorPickerPage.module.css'
 
 
@@ -72,38 +73,41 @@ function ColorPickerPage(){
     const handleHueChange = (value: number) => setHue(value)
 
     return(
-        <div className= {styles.main_container}>
-            <div className = {styles.sub_main_container}>
-                <ColorPicker
-                    hue={hue}
-                    saturation={saturation}
-                    cursorCordTop={cursorCordTop}
-                    savedColors={savedColors}
-                    handleMouseMovement={handleMouseMovement}
-                    onDragStart={handleDragStart}      
-                    onDragEnd={handleDragEnd}         
-                    getColor={getColor}
-                    onHueChange={handleHueChange}      
-                    setSavedColor={setSavedColor}
-                    deleteSavedColor={deleteSavedColor}
-                />
-                <CopyColor
-                    hsl={hsl}
-                    hex={hex}
-                    hue={hue}
-                    saturation={saturation}
-                    lightness={lightness}
-                    onSave={handleSavedColors}
-                    onCopy={handleCopy}
-                />
-            </div>
+        <>
+            <Header title="Color Picker Tool"/>
+            <div className= {styles.main_container}>
+                <div className = {styles.sub_main_container}>
+                    <ColorPicker
+                        hue={hue}
+                        saturation={saturation}
+                        cursorCordTop={cursorCordTop}
+                        savedColors={savedColors}
+                        handleMouseMovement={handleMouseMovement}
+                        onDragStart={handleDragStart}      
+                        onDragEnd={handleDragEnd}         
+                        getColor={getColor}
+                        onHueChange={handleHueChange}      
+                        setSavedColor={setSavedColor}
+                        deleteSavedColor={deleteSavedColor}
+                    />
+                    <CopyColor
+                        hsl={hsl}
+                        hex={hex}
+                        hue={hue}
+                        saturation={saturation}
+                        lightness={lightness}
+                        onSave={handleSavedColors}
+                        onCopy={handleCopy}
+                    />
+                </div>
 
-            <div className={styles.legend}>
-                    <p><strong>Click</strong> sul quadrato sulla destra per salvare il colore corrente nella palette.</p>
-                    <p><strong>Click</strong> su un colore salvato per ricaricarlo nel picker.</p>
-                    <p><strong>Click destro</strong> su un colore salvato per eliminarlo.</p>
+                <div className={styles.legend}>
+                        <p><strong>Click</strong> sul quadrato sulla destra per salvare il colore corrente nella palette.</p>
+                        <p><strong>Click</strong> su un colore salvato per ricaricarlo nel picker.</p>
+                        <p><strong>Click destro</strong> su un colore salvato per eliminarlo.</p>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
