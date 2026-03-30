@@ -4,14 +4,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import './index.css'
 
-import App from './App.tsx'
+import Homepage from './Homepage.tsx'
 import ColorPickerPage from './pages/ColorPickerPage/ColorPickerPage';
 import ToDoListPage from './pages/ToDoListPage/ToDoListPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.tsx';
 
 
 const router = createBrowserRouter([
-    {path: "/", element: <App/>},
+    {path: "/", element: <Homepage/>},
     {path: "/colorpicker", element: <ColorPickerPage/>},
     {path: "/todolist", element: <ToDoListPage/>},
     {path: "*", element: <NotFoundPage/>}

@@ -364,7 +364,6 @@ body{
 
 
 .clearContainer{
-   
     display: flex;
     justify-content: flex-end;
     padding: 0px 16px;

@@ -1,3 +1,6 @@
+
+![frontpage website](images/frontpage.png)
+
 # React Toolbox
 
 A personal project built to explore and deepen React skills through hands-on practice.
