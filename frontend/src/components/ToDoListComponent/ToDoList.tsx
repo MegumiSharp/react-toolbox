@@ -7,6 +7,8 @@ import { closestCorners, DndContext, type DragEndEvent, DragOverlay, type DragSt
 import { SortableContext, verticalListSortingStrategy, arrayMove } from '@dnd-kit/sortable'
 import TaskItem from './TaskItem'
 
+import Select from '../CustomFunctionality/Select'
+
 
 interface PriorityInfo {
     label: string
@@ -52,11 +54,6 @@ function ToDoList(){
     const [newTaskPriority, setNewTaskPriority] = useState('LOW');
 
     const priorityColor = priorities[newTaskPriority].color
-
-    
-    const handleSelectPriority = (e: React.ChangeEvent<HTMLSelectElement>) =>{
-        setNewTaskPriority(e.target.value)
-    }
 
         
     const handleModelChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -140,6 +137,19 @@ function ToDoList(){
         setTaskList(updatedTasks)
     }
 
+    const deleteAllTask = () => {
+        const confirmed = window.confirm("Sei Sicuro di eliminare tutte le task?")
+
+        if(!confirmed) return
+        
+        setTaskList([])
+    }
+
+    const onChange = (value: string)=>{
+        setNewTaskPriority(value)
+    }
+
+
     return (
         <div className={styles.container}>
             <div className={styles.taskFrame}>
@@ -168,12 +178,11 @@ function ToDoList(){
                         <rect width="8" height="8" rx="4" fill={priorityColor}/>
                         </svg>
 
-                        <select className={styles.priorityDropDown}
-                                onChange={(e)=> handleSelectPriority(e)}>
-                            <option value='LOW'>{priorities.LOW.label}</option>
-                            <option value='MEDIUM'>{priorities.MEDIUM.label}</option>
-                            <option value='HIGH'>{priorities.HIGH.label}</option>
-                        </select>
+                        <Select options={["LOW", "MEDIUM","HIGH"]}
+                                onChange={onChange}
+                                placeholder={"PRIORITY:"}
+                        />
+
                     </div>
                 </div>
                 <div className={styles.sortingContainer}>
@@ -213,8 +222,13 @@ function ToDoList(){
                         )}
                     </DragOverlay>
                 </DndContext>
-                <div className={styles.clearContainer}>
-                    <button className={styles.simpleButton} onClick={deleteCompletedTask}> CLEAR COMPLETED</button>
+                <div className={styles.bottomButtonsContainer}>
+                    <div className={styles.clearContainer}>
+                        <button className={styles.simpleButton} onClick={deleteCompletedTask}>CLEAR COMPLETED</button>
+                    </div>
+                    <div className={styles.clearContainer}>
+                        <button className={styles.simpleButton} onClick={deleteAllTask}>CLEAR ALL</button>
+                    </div>
                 </div>
             </div>
             <div className={styles.contextFrame}>

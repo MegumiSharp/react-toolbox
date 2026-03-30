@@ -56,7 +56,7 @@ function TaskItem({ task, onToggle, onDelete }: { task: Task, onToggle: (id: str
                 </div>
 
                 <button className={styles.trashButton} onClick={()=> onDelete(task.id)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><title>trash-can-2</title><g fill="#F7F7F7"><path d="m4.458,9l.463,11.125c.067,1.612,1.384,2.875,2.998,2.875h8.163c1.613,0,2.93-1.263,2.998-2.875l.463-11.125H4.458Z" stroke-width="0" fill="#F7F7F7"></path><path d="m16,5V1h-8v4H2v2h20v-2h-6Zm-6-2h4v2h-4v-2Z" fill="#F7F7F7" stroke-width="0"></path></g></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><title>trash-can-2</title><g fill="#F7F7F7"><path d="m4.458,9l.463,11.125c.067,1.612,1.384,2.875,2.998,2.875h8.163c1.613,0,2.93-1.263,2.998-2.875l.463-11.125H4.458Z" strokeWidth="0" fill="#F7F7F7"></path><path d="m16,5V1h-8v4H2v2h20v-2h-6Zm-6-2h4v2h-4v-2Z" fill="#F7F7F7" strokeWidth="0"></path></g></svg>
                 </button>
             </div>
         </div>

@@ -61,12 +61,7 @@ body{
     width: 100%;
 }
 
-.label{
-    font-family: 'Manrope', sans-serif;
-    font-size: 14px;
-    line-height: 16px;
-    color: var(--greyout-text-color);
-}
+
 
 .heading{
     font-family: 'Manrope', sans-serif;
@@ -150,26 +145,7 @@ body{
 
     border-left: 2px solid rgba(72, 72, 72, 0.3);
 }
-.priorityDropDown{
 
-    text-align: center;
-    padding:4px;
-    
-    border: none;
-    outline: none;
-    background: transparent;
-
-    cursor: pointer;
-
-    font-family: 'Manrope';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-
-
-    color: #9F9D9D;
-
-}
 
 .taskTitle-true{
     text-decoration: line-through;
@@ -388,7 +364,7 @@ body{
 
 
 .clearContainer{
-    width: 100%;
+   
     display: flex;
     justify-content: flex-end;
     padding: 0px 16px;
@@ -442,4 +418,12 @@ letter-spacing: -1.8px;
 color: #B8B9B9;
 
 
+}
+
+.bottomButtonsContainer{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
 }
