@@ -1,13 +1,14 @@
 import Header from '../../components/HeaderComponent/Header'
 import { Link } from 'react-router-dom'
 import styles from './NotFoundPage.module.css'
+import Footer from '../../components/FooterComponent/Footer'
 
 import errorImage from '../../assets/NotFoundPageImageError.avif'
 
 function NotFoundPage(){
 
     return(
-        <div className={styles.notFoundPageContainer}>
+        <div className="body_container">
             <Header title="Not Found Page"/>
             <div className={styles.notFoundContainer}>
                 <img src={errorImage} alt="Error 404" className={styles.errorImage}/>
@@ -21,6 +22,7 @@ function NotFoundPage(){
                     Go Back
                 </button>
             </Link>
+            <Footer/>
         </div>
     )
 }

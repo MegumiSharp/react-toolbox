@@ -5,6 +5,7 @@ import { hslToHex, rgbToHsl } from "../../utils/Utils.ts"
 import CopyColor from "../../components/ColorPickerComponent/CopyColor.tsx"
 import ColorPicker from "../../components/ColorPickerComponent/ColorPicker.tsx"
 import Header from "../../components/HeaderComponent/Header";
+import Footer from "../../components/FooterComponent/Footer.tsx";
 import styles from './ColorPickerPage.module.css'
 
 
@@ -73,7 +74,7 @@ function ColorPickerPage(){
     const handleHueChange = (value: number) => setHue(value)
 
     return(
-        <>
+        <div className="body_container">
             <Header title="Color Picker Tool"/>
             <div className= {styles.main_container}>
                 <div className = {styles.sub_main_container}>
@@ -107,7 +108,8 @@ function ColorPickerPage(){
                         <p><strong>Click destro</strong> su un colore salvato per eliminarlo.</p>
                 </div>
             </div>
-        </>
+            <Footer/>
+        </div>
     )
 }
 

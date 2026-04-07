@@ -1,6 +1,7 @@
 import styles from './Homepage.module.css'
 import {Link} from "react-router-dom";
 
+import Footer from './components/FooterComponent/Footer';
 import {tools, Tags} from './tools/tools.config';
 
 function Homepage() {
@@ -16,10 +17,12 @@ function Homepage() {
       <div className={styles.componentCardContainer}>
         {tools.map((tool)=>
           <div  key={tool.id} className={styles.cardContainer}>
-            {tool.image ? 
-            <Link to={tool.routerPath}><img src={tool.image} className={styles.image}/></Link> 
-            : <div className={styles.noImage}>Image not found</div>
-            }
+            <div className={styles.imageContainer}>
+              <Link to={tool.routerPath}>
+                <img src={tool.image} className={styles.image}/>
+              </Link> 
+            </div>
+
             
             <div className={styles.mainContainer}>
               <div className={styles.tagsContainer}>
@@ -35,7 +38,7 @@ function Homepage() {
               
               <h1>{tool.title}</h1>
 
-              <span>{tool.description}</span>
+              <span className={styles.description}>{tool.description}</span>
 
               <div  className={styles.buttonLinkFrame}> 
                 <Link to={tool.routerPath}><button className={styles.buttonLink}>Vai al Tool</button>
@@ -46,7 +49,9 @@ function Homepage() {
           </div>
          )}
       </div>
+      <Footer/>
     </div>
+    
   )
 }
 
