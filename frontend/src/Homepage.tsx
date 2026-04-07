@@ -3,9 +3,6 @@ import {Link} from "react-router-dom";
 
 import {tools, Tags} from './tools/tools.config';
 
-
-
-
 function Homepage() {
   return (
     <div className={styles.homepageContainer}>
