@@ -1,0 +1,128 @@
+.main_container{
+    width: 80%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+}
+
+/*STOPWATCH CONTAINER AND COMPONENTS*/
+
+.stopwatch_container{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    font-family: 'Manrope';
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 17px;
+
+    letter-spacing: 4.48px;
+    color: #9F9D9D;
+}
+
+.title svg{
+    color: #3D4C41;
+    transition: color 0.3s ease;
+}
+
+.stopwatch{
+     min-width: 860px;
+
+
+    font-variant-numeric: tabular-nums;
+    font-family: 'Manrope';
+    font-weight: 200;
+    font-size: 224px;
+    line-height: 224px;
+    letter-spacing: -11.2px;
+
+    color: #E7E5E5;
+}
+
+.controls_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+button{
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    gap: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    font-family: 'Manrope';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+
+    opacity: 1;
+    transition: opacity, transform, 200ms ease;
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: 0.5;
+}
+
+button:active{
+    transform: translateY(4px);
+}
+
+
+.start{
+    background: rgba(61, 76, 65, 0.8);
+    color: #A8BDAE;
+}
+
+.stop{
+    background: rgba(76, 52, 47, 0.8);
+    color: #BD9A94;
+}
+
+.reset{
+    background: rgba(47, 59, 76, 0.8);
+    color: #94A6BD;
+}
+
+
+.log_btn{
+
+    display: flex;
+    align-items: center;
+    padding: 24px 48px;
+    gap: 16px;
+
+    background: #1F2020;
+    border: 1px solid rgba(72, 72, 72, 0.1);
+    border-radius: 8px;
+
+    font-family: 'Manrope';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+
+    color: #E7E5E5;
+}

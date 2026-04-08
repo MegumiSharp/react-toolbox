@@ -41,7 +41,7 @@ export const tools: Tool[] = [
         id: 'colorpicker',
         title: 'Color Picker',
         description: 'Esplora, crea e salva palette di colori. Converti tra HEX, RGB e HSL in un istante, pronti da usare nel tuo prossimo progetto.',
-        tags: ['produttività', 'arte'],
+        tags: ['colore', 'design', 'arte'],
         routerPath: '/colorpicker',
         image: colorpickercard
     },
@@ -49,7 +49,7 @@ export const tools: Tool[] = [
         id: 'cronometer',
         title: 'Cronometro',
         description: 'Constata quanto tempo ci metti a fare le piú disparate attività, grazie a questo cronometro, semplice ed intuitivo, puoi tenere traccia di quanto ci é voluto a fare cosa.',
-        tags: ['produttività', 'utility', 'tempo'],
+        tags: ['utility', 'tempo'],
         routerPath: '/cronometer',
         image: placeholderImage
     }
