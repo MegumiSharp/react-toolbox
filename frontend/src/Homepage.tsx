@@ -19,7 +19,7 @@ function Homepage() {
           <div  key={tool.id} className={styles.cardContainer}>
             <div className={styles.imageContainer}>
               <Link to={tool.routerPath}>
-                <img src={tool.image} className={styles.image}/>
+                <img src={tool.image} className={styles.image} draggable="false"/>
               </Link> 
             </div>
 

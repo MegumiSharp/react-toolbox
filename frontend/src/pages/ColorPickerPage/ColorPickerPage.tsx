@@ -8,6 +8,8 @@ import Header from "../../components/HeaderComponent/Header";
 import Footer from "../../components/FooterComponent/Footer.tsx";
 import styles from './ColorPickerPage.module.css'
 
+import { motion } from 'framer-motion'
+
 
 function ColorPickerPage(){
 
@@ -76,6 +78,12 @@ function ColorPickerPage(){
     return(
         <div className="body_container">
             <Header title="Color Picker Tool"/>
+            <motion.div
+                initial={{ y: -100, opacity: 0 }}   // stato iniziale
+                animate={{ y: 0, opacity: 1 }}       // stato finale
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                style={{width: '100%'}}
+            >
             <div className= {styles.main_container}>
                 <div className = {styles.sub_main_container}>
                     <ColorPicker
@@ -101,13 +109,8 @@ function ColorPickerPage(){
                         onCopy={handleCopy}
                     />
                 </div>
-
-                <div className={styles.legend}>
-                        <p><strong>Click</strong> sul quadrato sulla destra per salvare il colore corrente nella palette.</p>
-                        <p><strong>Click</strong> su un colore salvato per ricaricarlo nel picker.</p>
-                        <p><strong>Click destro</strong> su un colore salvato per eliminarlo.</p>
-                </div>
             </div>
+            </motion.div>
             <Footer/>
         </div>
     )

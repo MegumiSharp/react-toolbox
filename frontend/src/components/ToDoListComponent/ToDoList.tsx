@@ -231,14 +231,14 @@ function ToDoList(){
                     </div>
                 </div>
             </div>
-            <div className={styles.contextFrame}>
+            <div className={styles.contextFrame}> 
                 <div className={styles.infoFrame}>
                     <span className={styles.upTitle}>
-                        <NumberFlow value={numberOfTaskActive}/></span>
+                        <NumberFlow value={numberOfTaskActive} format={{minimumIntegerDigits: 2}}/></span>
                     <span className={styles.subtitles}>ACTIVE TASKS</span>
                 </div>
                 <div className={styles.infoFrame}>
-                    <span className={styles.upTitle}><NumberFlow value={taskPercent} />%</span>
+                    <span className={styles.upTitle}><NumberFlow value={taskPercent} format={{minimumIntegerDigits: 2}}/>%</span>
                     <span className={styles.subtitles}>EFFICIENCY RATE</span>
                 </div>
             </div>

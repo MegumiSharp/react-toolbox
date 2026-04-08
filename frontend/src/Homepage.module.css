@@ -1,36 +1,35 @@
-.homepageContainer{
+.homepageContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 100vw;
     height: 100%;
-    gap: 64px
+    gap: 64px;
 }
 
-.heroSection{
+.heroSection {
     display: flex;
     flex-direction: column;
     text-align: center;
     gap: 24px;
     margin-top: 64px;
+    padding: 0 24px;
 }
 
-.heroSection h1{
+.heroSection h1 {
     font-family: 'Manrope';
     font-weight: 800;
     font-size: 80px;
     line-height: 80px;
-
     letter-spacing: -4px;
-
-    background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+    background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.heroSection span{
+.heroSection span {
     font-family: 'Manrope';
     font-style: normal;
     font-weight: 300;
@@ -39,26 +38,27 @@
     color: #ACABAA;
 }
 
-.componentCardContainer{
+/* ── Card grid ── */
+.componentCardContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
     align-items: flex-start;
+    padding: 0 24px;
+    width: 100%;
+    max-width: 1400px;
 }
 
 .cardContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
     width: 400px;
     min-height: 460px;
-
     background: #131313;
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
     border-radius: 16px;
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -67,19 +67,20 @@
     box-shadow: 0px 32px 56px rgba(0, 0, 0, 0.6);
 }
 
-.imageContainer{
+.imageContainer {
     width: 100%;
     height: 269px;
     overflow: hidden;
+    border-radius: 16px 16px 0 0;
 }
 
-.image{
+.image {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.mainContainer{
+.mainContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -89,22 +90,18 @@
     width: 100%;
 }
 
-.mainContainer h1{
-
+.mainContainer h1 {
     font-family: 'Manrope';
-
     font-weight: 700;
     font-size: 24px;
     line-height: 32px;
-
     display: flex;
     align-items: center;
     letter-spacing: -0.6px;
-
     color: #C6C6C7;
 }
 
-.mainContainer span{
+.mainContainer span {
     width: 100%;
     font-family: 'Manrope';
     font-style: normal;
@@ -113,14 +110,11 @@
     line-height: 23px;
     display: flex;
     align-items: center;
-
     text-align: justify;
-
     color: #ACABAA;
 }
 
-
-.tagsContainer{
+.tagsContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -128,56 +122,128 @@
     gap: 16px;
 }
 
-.tagFrame{
+.tagFrame {
     display: flex;
     align-items: center;
     gap: 8px;
-
     font-family: 'Manrope';
     font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
 }
 
-.buttonLinkFrame{
+.buttonLinkFrame {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
-.buttonLink{
-
+.buttonLink {
     font-family: 'Manrope';
     font-style: normal;
     font-weight: 400;
-    font-size: 11.2px;
+    font-size: 14px;
     line-height: 17px;
     color: #9F9D9D;
     letter-spacing: 1.12px;
     text-transform: uppercase;
-
     border: none;
     background: none;
-    
-}
-
-
-
-.description{
-    min-height: 100px;
-}
-
-
-.buttonLink{
-
-
-    
-    font-size: 14px;
     cursor: pointer;
     opacity: 1;
     transition: opacity 300ms ease;
 }
 
-.buttonLink:hover{
+.buttonLink:hover {
     opacity: 0.7;
+}
+
+.description {
+    min-height: 100px;
+}
+
+/* ── Tablet ── */
+@media (max-width: 900px) {
+    .heroSection h1 {
+        font-size: 56px;
+        line-height: 60px;
+        letter-spacing: -2px;
+    }
+
+    .heroSection span {
+        font-size: 17px;
+        line-height: 28px;
+    }
+
+    .cardContainer {
+        width: 340px;
+        min-height: auto;
+    }
+
+    .imageContainer {
+        height: 220px;
+    }
+
+    .componentCardContainer {
+        gap: 28px;
+    }
+}
+
+/* ── Mobile ── */
+@media (max-width: 560px) {
+    .homepageContainer {
+        gap: 40px;
+    }
+
+    .heroSection {
+        margin-top: 40px;
+        padding: 0 16px;
+        gap: 16px;
+    }
+
+    .heroSection h1 {
+        font-size: 38px;
+        line-height: 42px;
+        letter-spacing: -1.5px;
+    }
+
+    .heroSection span {
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    /* Rimuovi i <br/> visivi su mobile — usa solo testo fluente */
+    .heroSection span br {
+        display: none;
+    }
+
+    .componentCardContainer {
+        gap: 20px;
+        padding: 0 16px;
+    }
+
+    .cardContainer {
+        width: 100%;
+        min-height: auto;
+        border-radius: 12px;
+    }
+
+    .imageContainer {
+        height: 200px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .mainContainer {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .mainContainer h1 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .description {
+        min-height: unset;
+    }
 }

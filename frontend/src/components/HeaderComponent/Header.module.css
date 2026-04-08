@@ -1,4 +1,4 @@
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,18 +7,25 @@
     background: rgba(14, 14, 14, 0.6);
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(12px);
+    box-sizing: border-box;
 }
 
-
-.titleOptionContainer{
+.titleOptionContainer {
     display: flex;
-
     justify-content: center;
     align-items: center;
-   gap: 16px;
+    gap: 16px;
 }
 
-.homepageBtn{
+.headerTitle {
+    font-family: 'Manrope';
+    font-size: 18px;
+    font-weight: 600;
+    color: #E7E5E5;
+    margin: 0;
+}
+
+.homepageBtn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,20 +41,58 @@
     padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
-    
+
     background-color: transparent;
     cursor: pointer;
 }
-
-
-
 
 .homepageBtn:active {
     opacity: 1;
     transform: translateY(2px);
 }
 
-
-.homepageBtn:hover{
+.homepageBtn:hover {
     opacity: 0.75;
+}
+
+/* ── Tablet ── */
+@media (max-width: 768px) {
+    .header {
+        padding: 20px 24px;
+    }
+
+    .headerTitle {
+        font-size: 16px;
+    }
+
+    .homepageBtn {
+        font-size: 0.9em;
+        padding: 0.5em 0.8em;
+    }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+    .header {
+        padding: 14px 16px;
+    }
+
+    .headerTitle {
+        font-size: 14px;
+    }
+
+    .homepageBtn {
+        font-size: 0.85em;
+        padding: 0.4em 0.6em;
+        gap: 6px;
+    }
+
+    .titleOptionContainer {
+        gap: 10px;
+    }
+
+    .titleOptionContainer svg {
+        width: 18px;
+        height: 18px;
+    }
 }

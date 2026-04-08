@@ -64,13 +64,20 @@ function Select(props: SelectedProps){
                     <div>{props.placeholder}</div>
                     }
                 
-                <div><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><title>down-arrow</title><g fill="#F7F7F7" strokeLinejoin="miter" strokeLinecap="butt"><polyline fill="none" stroke="#F7F7F7" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" points="2,7 12,17 22,7 " transform="translate(0, 0)" strokeLinejoin="miter"></polyline></g></svg></div>
+                <div className={`${styles.arrow} ${isOpen ? styles.arrowOpen : ''}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                        <polyline fill="none" stroke="#F7F7F7" strokeWidth="3"
+                                strokeLinecap="round" strokeMiterlimit="10"
+                                points="2,7 12,17 22,7"/>
+                    </svg>
+                </div>
             </button>
             {isOpen && 
                 <ul className={styles.menuPanel} role="listbox">
                     {props.options.map(option =>(
                         <li role="option"
                             className={styles.option}
+                            data-value={option}
                             key={option}
                             onClick={()=>handleSelection(option)}
                             >
