@@ -2,17 +2,37 @@ import { useEffect, useRef, useState } from 'react'
 import styles from './Cronometer.module.css'
 import NumberFlow from '@number-flow/react'
 
-function Pomodoro(){
+interface Activity{
+    id: string
+    title: string
+    elapsedTime: number
+}
+
+function Cronometer(){
 
     const [isRunning, setIsRunning] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
-    const [totalTime, setTotalTime] = useState(0);
     const intervalIdRef = useRef(0);
     const startTimeRef = useRef(0);
+    const[activity, setActivityList] = useState<Activity[]>(()=>{
+        const saved = localStorage.getItem('cronometer')
+        return saved ? JSON.parse(saved) : []
+    });
 
-    const hours = Math.floor(elapsedTime / (1000 * 60 * 60) % 60);
-    const minutes = Math.floor(elapsedTime / (1000 * 60) % 60);
-    const seconds = Math.floor(elapsedTime / 1000 % 60 );
+    useEffect(()=>{
+        localStorage.setItem('cronometer', JSON.stringify(activity))
+    }, [activity])
+    
+    const totalTime = activity.reduce((acc, act) => acc + act.elapsedTime, 0);
+
+    const parseTime = (ms: number) => ({
+        hours: Math.floor(ms / (1000 * 60 * 60) % 60),
+        minutes: Math.floor(ms / (1000 * 60) % 60),
+        seconds: Math.floor(ms / 1000 % 60 )
+    })
+
+    const {hours, minutes, seconds} = parseTime(elapsedTime);
+    const {hours: focusHour, minutes: focusMinutes, seconds: focusSeconds } = parseTime(totalTime);
 
     const colorSession = isRunning ? '#3D4C41' : '#D2715D';
 
@@ -38,6 +58,25 @@ function Pomodoro(){
     const reset = ()=>{
         setElapsedTime(0);
         setIsRunning(false);
+    }
+
+    const logActivity = ()=>{
+        const roundedTime = Math.floor(elapsedTime / 1000) *1000;
+
+        if (roundedTime === 0) return
+        setActivityList([...activity, {id: crypto.randomUUID(),
+                                       title: "",
+                                       elapsedTime: roundedTime}])
+        setElapsedTime(0);
+        setIsRunning(false);
+    }
+
+    //Per ogni attivity dove l'id é uguale a quello cercato, usa li stessi parametri
+    //cambiando solo title
+    const updateActivityTitle = (id: string, inputTitle: string)=>{
+        setActivityList(prev => prev.map(act => 
+            act.id === id ? {...act, title: inputTitle} : act
+        ))
     }
 
     return(
@@ -74,15 +113,52 @@ function Pomodoro(){
                         RESET
                     </button>
                 </div>
-                <button className={styles.log_btn}>
+                <button className={styles.log_btn} onClick={logActivity}>
                     <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.0833 0 12.1083 0.158333 13.075 0.475C14.0417 0.791667 14.9333 1.23333 15.75 1.8L14.3 3.275C13.6667 2.875 12.9917 2.5625 12.275 2.3375C11.5583 2.1125 10.8 2 10 2C7.78333 2 5.89583 2.77917 4.3375 4.3375C2.77917 5.89583 2 7.78333 2 10C2 12.2167 2.77917 14.1042 4.3375 15.6625C5.89583 17.2208 7.78333 18 10 18C10.5333 18 11.05 17.95 11.55 17.85C12.05 17.75 12.5333 17.6083 13 17.425L14.5 18.95C13.8167 19.2833 13.1 19.5417 12.35 19.725C11.6 19.9083 10.8167 20 10 20ZM17 18V15H14V13H17V10H19V13H22V15H19V18H17ZM8.6 14.6L4.35 10.35L5.75 8.95L8.6 11.8L18.6 1.775L20 3.175L8.6 14.6Z" fill="#B8B9B9"/>
                     </svg>
                     <span>LOG CURRENT ACTIVITY</span>
                 </button>
             </div>
+            <div className={styles.activity_container}>
+                <div className={styles.dailyfocus_container}>
+                    <div className={styles.dailyfocus_title}>
+                        <span>TOTAL FOCUS TIME</span>
+                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.4 12L0 10.6L7.4 3.15L11.4 7.15L16.6 2H14V0H20V6H18V3.4L11.4 10L7.4 6L1.4 12Z" fill="#B8B9B9"/>
+                        </svg>
+                    </div>
+                    <div className={styles.dailyfocus_time}>
+                        <NumberFlow value={focusHour} format={{minimumIntegerDigits: 2}}/>:
+                        <NumberFlow value={focusMinutes} format={{minimumIntegerDigits: 2}}/>:
+                        <NumberFlow value={focusSeconds} format={{minimumIntegerDigits: 2}}/>
+                    </div>
+                </div>
+                <div className={styles.activity_list}>
+                    {activity.map((activity, index)=> 
+                        <div className={styles.activity} key={activity.id}>
+                            <div className={styles.index}>{String((index + 1)).padStart(2, '0')}</div>
+                            <div className={styles.activity_input_container}>
+                                <input className={styles.activity_input} 
+                                       placeholder="Click to name this session...."
+                                       onChange={(e)=> updateActivityTitle(activity.id, e.target.value)}
+                                       value={activity.title}
+                                       maxLength={35}
+                                       >
+                                </input>
+                            </div>
+                            
+                            <div className={styles.elapsedTime}>
+                                <NumberFlow value={parseTime(activity.elapsedTime).hours} format={{minimumIntegerDigits: 2}}/>:
+                                <NumberFlow value={parseTime(activity.elapsedTime).minutes}  format={{minimumIntegerDigits: 2}}/>:
+                                <NumberFlow value={parseTime(activity.elapsedTime).seconds}  format={{minimumIntegerDigits: 2}}/>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     )
 }
 
-export default Pomodoro
+export default Cronometer

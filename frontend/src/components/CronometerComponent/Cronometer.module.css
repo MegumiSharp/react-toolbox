@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Liberation+Mono&display=swap');
+
 .main_container{
     width: 80%;
     height: 100%;
@@ -43,8 +45,7 @@
 }
 
 .stopwatch{
-     min-width: 860px;
-
+    min-width: 860px;
 
     font-variant-numeric: tabular-nums;
     font-family: 'Manrope';
@@ -125,4 +126,142 @@ button:active{
     letter-spacing: 1.2px;
 
     color: #E7E5E5;
+}
+
+
+/*ACTIVITIY CONTAINER AND COMPONENTS*/
+.activity_container{
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+}
+
+/*daily focus container COMPONENTS*/
+
+.dailyfocus_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 32px;
+
+    background: rgba(19, 19, 19, 0.815);
+    border: 1px solid rgba(72, 72, 72, 0.1);
+    border-radius: 32px;
+}
+
+.dailyfocus_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+
+    width: 100%;
+
+    font-family: 'Manrope';
+
+    font-weight: 700;
+    font-size: 10.4px;
+    line-height: 16px;
+    letter-spacing: 3.12px;
+    color: #9F9D9D;
+}
+
+.dailyfocus_time{
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    font-variant-numeric: tabular-nums;
+    font-family: 'Manrope';
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: -1.8px;
+
+    color: #E7E5E5;
+}
+
+/* ACTIVITY */
+
+.activity_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.activity{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 40px;
+
+    background: #131313;
+    border-radius: 16px;
+    animation: fade-in 0.5s ease;
+}
+
+@keyframes fade-in{
+    from {
+      opacity: 0.2;
+    }
+     to {
+     opacity: 1;
+   }
+}
+
+.index{
+    font-family: 'Liberation Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+
+    color: rgba(172, 171, 170, 0.4);
+}
+
+.activity_input_container{
+    padding: 0px 33px;
+    width: 400px;
+}
+
+.activity_input {
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid transparent;
+    
+    font-family: 'Manrope';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.35px;
+    color: #E7E5E5;
+    
+    
+    width: 100%;
+    
+    cursor: pointer;
+    transition: border-bottom-color 200ms ease;
+}
+
+.activity_input::placeholder {
+    color: #9F9D9D;
+}
+
+.activity_input:hover {
+    border-bottom-color: #9F9D9D;
+}
+
+.activity_input:focus {
+    border-bottom-color: #E7E5E5;
+    cursor: text;
 }
