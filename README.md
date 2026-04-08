@@ -35,21 +35,21 @@ npm run dev
 | Tool | Status | Description |
 |------|--------|-------------|
 | Color Picker | ✅ Available | Full custom color picker — no default browser input used |
+| TO-DO List | ✅ Available | Full custom to do list with built-in local storage based on cookies |
+| Cronometer| ✅ Available | Custom cronometer with activity list and total focus time |
 
 ---
 
 ## Roadmap
 
-- [ ] Pomodoro Timer
-- [ ] Kanban / Trello Board
+- [X] To-Do List
+- [X] Color Picker
+- [X] Cronometer
 - [ ] Color Palette Generator from a single color
 - [ ] Typeface tester with font & size preview
 - [ ] BMI Calculator
 - [ ] Zone 2 Heart Rate Calculator
-- [ ] Post-it Fast Notes
-- [ ] Roll a Dice in 3D
-- [ ] Flip a Coin in 3D
-- [ ] ▶️ YouTube Video Downloader *(academic purposes only)*
+- [ ] Kanban Board
 - [ ] And more...
 
 
