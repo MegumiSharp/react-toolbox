@@ -1,6 +1,5 @@
 import todocard from '../assets/todocard.png'
 import colorpickercard from '../assets/colorpickercard.png'
-import placeholderImage from '../assets/placeholderImage.jpg'
 import cronometercard from '../assets/cronometercard.png'
 
 export type Tool = {
