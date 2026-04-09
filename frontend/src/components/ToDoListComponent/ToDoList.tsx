@@ -11,6 +11,8 @@ import Select from '../CustomFunctionality/Select'
 
 import {motion, AnimatePresence } from 'framer-motion'
 
+import Swal from 'sweetalert2'
+
 
 interface PriorityInfo {
     label: string
@@ -140,10 +142,19 @@ function ToDoList(){
         setTaskList(updatedTasks)
     }
 
-    const deleteAllTask = () => {
-        const confirmed = window.confirm("Sei Sicuro di eliminare tutte le task?")
+    const deleteAllTask = async () => {
 
-        if(!confirmed) return
+        const result = await Swal.fire({
+            title: 'Delete all tasks?',
+            text: 'This action cannot be undone.',
+            icon: 'warning',
+            theme: 'dark',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete',
+            cancelButtonText: 'Cancel',
+        })
+
+        if (!result.isConfirmed) return
         
         setTaskList([])
     }

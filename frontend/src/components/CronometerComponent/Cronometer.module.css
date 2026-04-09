@@ -257,7 +257,7 @@ button:active{
     
     font-family: 'Manrope';
     font-weight: 500;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 20px;
     letter-spacing: 0.35px;
     color: #E7E5E5;
@@ -391,4 +391,5 @@ button:active{
     .elapsedTime{
         font-size: 16px;
     }
+
 }

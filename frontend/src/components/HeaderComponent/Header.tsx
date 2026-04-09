@@ -1,6 +1,8 @@
 import styles from "./Header.module.css"
 import { Link } from "react-router-dom"
 
+import Swal from 'sweetalert2'
+
 
 type HeaderProps = {
     title: string;
@@ -14,13 +16,22 @@ const pageStorageKeys : Record<string, string> = {
 
 function Header({ title }: HeaderProps){
 
-    const handleClearLocalStorage = ()=>{
-        const confirmed = window.confirm(`Sei Sicuro di eliminare i dati salvati della pagina ${title}?`)
+    const handleClearLocalStorage = async ()=>{
+    
+        const result = await Swal.fire({
+            title: 'Clear page data?',
+            text: `All saved data for "${title}" will be permanently deleted.`,
+            icon: 'warning',
+            theme: 'dark',
+            draggable: true,
+            showCancelButton: true,
+            showCloseButton: true,
+            confirmButtonText: 'Yes, clear it',
+            cancelButtonText: 'Cancel',
+        })
 
-        if(!confirmed) return
+        if (!result.isConfirmed) return
 
-        console.log(title)
-        console.log(pageStorageKeys[title])
         localStorage.removeItem(pageStorageKeys[title])
 
         window.location.reload()
