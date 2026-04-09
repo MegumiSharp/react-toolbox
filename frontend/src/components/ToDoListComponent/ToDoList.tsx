@@ -9,6 +9,8 @@ import TaskItem from './TaskItem'
 
 import Select from '../CustomFunctionality/Select'
 
+import {motion, AnimatePresence } from 'framer-motion'
+
 
 interface PriorityInfo {
     label: string
@@ -32,6 +34,7 @@ const priorities: Record<string, PriorityInfo> = {
 
 function ToDoList(){
     
+    const isMobile = window.innerWidth < 768;
 
     const date = new Date();
 
@@ -149,7 +152,6 @@ function ToDoList(){
         setNewTaskPriority(value)
     }
 
-
     return (
         <div className={styles.container}>
             <div className={styles.taskFrame}>
@@ -168,7 +170,7 @@ function ToDoList(){
 
                 </div>
                 <div className={styles.addNewTaskContainer}>
-                    <input type='text' maxLength={50}
+                    <input type='text' maxLength={isMobile ? 20 : 50}
                            placeholder='Add a new Task (Press Enter to add)...'
                            className={styles.addTaskInput}
                            onKeyDown={handleModelChange}>
@@ -206,7 +208,20 @@ function ToDoList(){
                 >
                     <SortableContext items={taskList.map(t => t.id)} strategy={verticalListSortingStrategy}>
                         <div className={styles.taskContainer}>
-                            {sorted.map((task) => <TaskItem key={task.id} task={task} onToggle={handleToggle} onDelete = {deleteTask}/>)}
+                            <AnimatePresence>
+                                {sorted.map((task) => 
+                                    <motion.div
+                                        key={task.id}
+                                        className={styles.taskContainer}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        layout
+                                    >
+                                        <TaskItem key={task.id} task={task} onToggle={handleToggle} onDelete = {deleteTask}/>
+                                    </motion.div>
+                                    )}
+                            </AnimatePresence>
                         </div>
                     </SortableContext>
                     <DragOverlay>

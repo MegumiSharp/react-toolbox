@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import styles from './Cronometer.module.css'
 import NumberFlow from '@number-flow/react'
 
+import { motion, AnimatePresence } from 'framer-motion'
+
 interface Activity{
     id: string
     title: string
@@ -79,6 +81,13 @@ function Cronometer(){
         ))
     }
 
+    const handleRemove = (id: string)=>{
+
+        const updatedActivity = activity.filter(act => act.id !== id);
+
+        setActivityList(updatedActivity)
+    }
+
     return(
         <div className={styles.main_container}>
             <div className={styles.stopwatch_container}>
@@ -134,27 +143,54 @@ function Cronometer(){
                         <NumberFlow value={focusSeconds} format={{minimumIntegerDigits: 2}}/>
                     </div>
                 </div>
-                <div className={styles.activity_list}>
-                    {activity.map((activity, index)=> 
-                        <div className={styles.activity} key={activity.id}>
-                            <div className={styles.index}>{String((index + 1)).padStart(2, '0')}</div>
-                            <div className={styles.activity_input_container}>
-                                <input className={styles.activity_input} 
-                                       placeholder="Click to name this session...."
-                                       onChange={(e)=> updateActivityTitle(activity.id, e.target.value)}
-                                       value={activity.title}
-                                       maxLength={35}
-                                       >
-                                </input>
-                            </div>
-                            
-                            <div className={styles.elapsedTime}>
-                                <NumberFlow value={parseTime(activity.elapsedTime).hours} format={{minimumIntegerDigits: 2}}/>:
-                                <NumberFlow value={parseTime(activity.elapsedTime).minutes}  format={{minimumIntegerDigits: 2}}/>:
-                                <NumberFlow value={parseTime(activity.elapsedTime).seconds}  format={{minimumIntegerDigits: 2}}/>
-                            </div>
+
+                <div>
+                    <div className={styles.activity_list}>
+                        <div className={styles.laptitleFrame}>
+                            <span>#</span>
+                            <span>ACTIVITY TITLE</span>
+                            <span>ELAPSED</span>
                         </div>
-                    )}
+                        <AnimatePresence>
+                            {activity.map((activity, index) => (
+                                <motion.div
+                                    key={activity.id}
+                                    className={styles.activity}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    layout
+                                >
+                                    <div className={styles.index}>
+                                        {String((index + 1)).padStart(2, '0')}
+                                    </div>
+
+                                    <div className={styles.activity_input_container}>
+                                        <input
+                                            className={styles.activity_input}
+                                            placeholder="Click to name this session...."
+                                            onChange={(e) => updateActivityTitle(activity.id, e.target.value)}
+                                            value={activity.title}
+                                            maxLength={35}
+                                        />
+                                    </div>
+
+                                    <div className={styles.elapsedTime}>
+                                        <NumberFlow value={parseTime(activity.elapsedTime).hours} format={{ minimumIntegerDigits: 2 }} />:
+                                        <NumberFlow value={parseTime(activity.elapsedTime).minutes} format={{ minimumIntegerDigits: 2 }} />:
+                                        <NumberFlow value={parseTime(activity.elapsedTime).seconds} format={{ minimumIntegerDigits: 2 }} />
+                                    </div>
+
+                                    <button
+                                        className={styles.removeBtn}
+                                        onClick={() => handleRemove(activity.id)}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><title>e-remove</title><g fill="#F7F7F7" strokeLinejoin="miter" strokeLinecap="butt"><line x1="19" y1="19" x2="5" y2="5" fill="none" stroke="#F7F7F7" strokeLinecap="square" strokeMiterlimit="10" strokeWidth="2"></line><line x1="19" y1="5" x2="5" y2="19" fill="none" stroke="#F7F7F7" strokeLinecap="square" strokeMiterlimit="10" strokeWidth="2"></line></g></svg>
+                                    </button>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
+                    </div>
                 </div>
             </div>
         </div>

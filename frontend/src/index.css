@@ -16,9 +16,8 @@ body {
   overflow-x: hidden;
   background-color: #0e0e0ef5;
   user-select: none;
-  -webkit-user-drag: none;
- 
 }
+
 
 .body_container{
     display: flex;

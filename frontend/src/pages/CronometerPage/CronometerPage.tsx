@@ -16,10 +16,7 @@ function CronometerPage(){
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center',
-
-                    }}
-            >
+                        alignItems: 'center',}}>
                 <Cronometer/>
             </motion.div>
             <Footer/>

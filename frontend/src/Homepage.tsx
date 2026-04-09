@@ -4,9 +4,23 @@ import {Link} from "react-router-dom";
 import Footer from './components/FooterComponent/Footer';
 import {tools, Tags} from './tools/tools.config';
 
+
+import { motion } from 'framer-motion'
+
 function Homepage() {
   return (
     <div className={styles.homepageContainer}>
+      <motion.div
+                initial={{ y: -100, opacity: 0 }}   // stato iniziale
+                animate={{ y: 0, opacity: 1 }}       // stato finale
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                    style={{
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'column',
+                        gap: '54px'}}>
       <div className={styles.heroSection}>
         <h1>React ToolBox</h1>
         <span>Una selezione di strumenti essenziali pensati per aiutarti a concentrarti e <br/> dare spazio alla creatività. Ogni tool vive in un contesto pulito e <br/> silenzioso, perché ciò che conta è solo il tuo lavoro. <br/> 
@@ -49,6 +63,7 @@ function Homepage() {
           </div>
          )}
       </div>
+      </motion.div>
       <Footer/>
     </div>
     

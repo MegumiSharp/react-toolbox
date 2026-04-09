@@ -111,3 +111,32 @@
 .option[data-value="LOW"]:hover    { color: #2dcc48; }
 .option[data-value="MEDIUM"]:hover { color: #F4B400; }
 .option[data-value="HIGH"]:hover   { color: #e24540; }
+
+
+@media (max-width: 480px) {
+    .drowDownMenuContainer {
+        font-size: 11px;
+    }
+
+    .DropDownMenuBtn {
+        padding: 6px 10px;
+        gap: 4px;
+    }
+
+    .menuPanel {
+        /* se il menu è vicino al bordo destro, aprilo verso sinistra */
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+
+    @keyframes menuIn {
+        from { opacity: 0; transform: translateY(-4px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .option {
+        padding: 10px 12px; /* area tap più grande su mobile */
+        font-size: 11px;
+    }
+}

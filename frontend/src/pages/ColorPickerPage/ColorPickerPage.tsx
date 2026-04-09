@@ -1,4 +1,4 @@
-import React, {useMemo, useState } from "react"
+import React, {useEffect, useMemo, useState } from "react"
 
 import { hslToHex, rgbToHsl } from "../../utils/Utils.ts"
 
@@ -17,7 +17,14 @@ function ColorPickerPage(){
     const [saturation, setSaturation] = useState(100)
     const [lightness, setLightness] = useState(50)
 
-    const [savedColors, setSavedColors] = useState<string[]>([])
+    const [savedColors, setSavedColors] = useState<string[]>(()=>{
+        const saved = localStorage.getItem('savedColors')
+        return saved ? JSON.parse(saved) : []
+    })
+
+    useEffect(()=>{
+        localStorage.setItem('savedColors', JSON.stringify(savedColors))
+    },[savedColors]);
 
     const [isDragging, setIsDragging] = useState(false)
     const cursorCordTop = useMemo(()=> (100 - (lightness / (100 - (saturation/2)))  *100), [lightness,saturation])

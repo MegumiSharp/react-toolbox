@@ -23,7 +23,7 @@ const priorities: Record<string, PriorityInfo> = {
 }
 
 
-function TaskItem({ task, onToggle, onDelete }: { task: Task, onToggle: (id: string, checked: boolean) => void,onDelete: (index: string)=>void })
+function TaskItem({ task, onToggle, onDelete }: { task: Task, onToggle: (id: string, checked: boolean) => void, onDelete: (index: string)=>void })
 {
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: task.id })
 

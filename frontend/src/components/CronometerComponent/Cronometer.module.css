@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Liberation+Mono&display=swap');
 
 .main_container{
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     height: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 64px;
+    gap: 48px;
+    padding: 32px 0;
+    margin: 0 auto;
 }
 
 /*STOPWATCH CONTAINER AND COMPONENTS*/
@@ -20,7 +23,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 32px;
+    gap: 24px;
 }
 
 .title{
@@ -45,36 +48,43 @@
 }
 
 .stopwatch{
-    min-width: 860px;
+    width: 100%;
 
     font-variant-numeric: tabular-nums;
     font-family: 'Manrope';
     font-weight: 200;
-    font-size: 224px;
-    line-height: 224px;
-    letter-spacing: -11.2px;
+    font-size: clamp(56px, 18vw, 224px);
+    line-height: 1;
+    letter-spacing: -0.05em;
 
     color: #E7E5E5;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .controls_container{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 32px;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 button{
     display: flex;
     align-items: center;
-    padding: 20px 40px;
-    gap: 16px;
+    padding: 16px 24px;
+    gap: 10px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 
     font-family: 'Manrope';
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 16px;
     letter-spacing: 1.2px;
 
@@ -91,7 +101,6 @@ button:active{
     transform: translateY(4px);
 }
 
-
 .start{
     background: rgba(61, 76, 65, 0.8);
     color: #A8BDAE;
@@ -107,13 +116,14 @@ button:active{
     color: #94A6BD;
 }
 
-
 .log_btn{
-
     display: flex;
     align-items: center;
-    padding: 24px 48px;
-    gap: 16px;
+    justify-content: center;
+    padding: 20px 32px;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
 
     background: #1F2020;
     border: 1px solid rgba(72, 72, 72, 0.1);
@@ -128,12 +138,14 @@ button:active{
     color: #E7E5E5;
 }
 
-
-/*ACTIVITIY CONTAINER AND COMPONENTS*/
+/*ACTIVITY CONTAINER AND COMPONENTS*/
 .activity_container{
     display: flex;
-    align-items: flex-start;
-    gap: 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+    width: 100%;
 }
 
 /*daily focus container COMPONENTS*/
@@ -142,24 +154,25 @@ button:active{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
-    gap: 32px;
+    padding: 28px 24px;
+    gap: 20px;
 
     background: rgba(19, 19, 19, 0.815);
     border: 1px solid rgba(72, 72, 72, 0.1);
-    border-radius: 32px;
+    border-radius: 24px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dailyfocus_title{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 32px;
+    gap: 16px;
 
     width: 100%;
 
     font-family: 'Manrope';
-
     font-weight: 700;
     font-size: 10.4px;
     line-height: 16px;
@@ -168,9 +181,7 @@ button:active{
 }
 
 .dailyfocus_time{
-
     display: flex;
-
     justify-content: center;
     align-items: center;
 
@@ -179,21 +190,22 @@ button:active{
     font-variant-numeric: tabular-nums;
     font-family: 'Manrope';
     font-weight: 300;
-    font-size: 36px;
-    line-height: 40px;
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.2;
     letter-spacing: -1.8px;
 
     color: #E7E5E5;
 }
 
-/* ACTIVITY */
+/* ACTIVITY LIST */
 
 .activity_list{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
 }
 
 .activity{
@@ -201,11 +213,14 @@ button:active{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 28px 40px;
+    padding: 20px 16px;
+    gap: 8px;
 
     background: #131313;
     border-radius: 16px;
     animation: fade-in 0.5s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 @keyframes fade-in{
@@ -221,16 +236,17 @@ button:active{
     font-family: 'Liberation Mono', monospace;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 16px;
-
+    flex-shrink: 0;
 
     color: rgba(172, 171, 170, 0.4);
 }
 
 .activity_input_container{
-    padding: 0px 33px;
-    width: 400px;
+    padding: 0 12px;
+    flex: 1;
+    min-width: 0;
 }
 
 .activity_input {
@@ -241,11 +257,10 @@ button:active{
     
     font-family: 'Manrope';
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.35px;
     color: #E7E5E5;
-    
     
     width: 100%;
     
@@ -264,4 +279,116 @@ button:active{
 .activity_input:focus {
     border-bottom-color: #E7E5E5;
     cursor: text;
+}
+
+.elapsedTime{
+    display: flex;
+    align-items: center;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Manrope';
+    font-weight: 300;
+    font-size: clamp(12px, 3.5vw, 16px);
+    color: #E7E5E5;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.removeBtn{
+    background-color: transparent;
+    border: none;
+    padding: 6px;
+    margin-left: 4px;
+    flex-shrink: 0;
+}
+
+.laptitleFrame{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 18px;
+    gap: 8px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    font-family: 'Manrope';
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 14px;
+
+    letter-spacing: 2.88px;
+    color: #9F9D9D;
+}
+
+/* DESKTOP OVERRIDES */
+@media (min-width: 768px) {
+    .main_container{
+        width: 80%;
+        gap: 64px;
+    }
+
+    .stopwatch_container{
+        gap: 32px;
+    }
+
+    .controls_container{
+        gap: 32px;
+        flex-wrap: nowrap;
+    }
+
+    button{
+        padding: 20px 40px;
+        gap: 16px;
+        font-size: 12px;
+    }
+
+    .log_btn{
+        padding: 24px 48px;
+        width: auto;
+        max-width: none;
+    }
+
+    .activity_container{
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 48px;
+    }
+
+    .dailyfocus_container{
+        padding: 40px;
+        gap: 32px;
+        border-radius: 32px;
+        width: auto;
+        min-width: 200px;
+    }
+
+    .activity{
+        padding: 28px 40px;
+        gap: 0;
+    }
+
+    .activity_input_container{
+        padding: 0 33px;
+        width: 400px;
+        flex: none;
+    }
+
+    .activity_input{
+        font-size: 14px;
+    }
+
+    .index{
+        font-size: 14px;
+    }
+
+    .laptitleFrame{
+        padding: 0 42px;
+        min-width: 604px;
+        gap: 30px;
+        font-size: 12px;
+    }
+
+    .elapsedTime{
+        font-size: 16px;
+    }
 }

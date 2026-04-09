@@ -55,6 +55,23 @@
     opacity: 0.75;
 }
 
+.clearLocalStorageBtn{
+        transition: opacity 400ms ease, transform 200ms ease, color 200ms ease;
+    font-family: 'Manrope';
+    color: #E7E5E5;
+
+    text-decoration: none;
+    border: none;
+
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
 /* ── Tablet ── */
 @media (max-width: 768px) {
     .header {

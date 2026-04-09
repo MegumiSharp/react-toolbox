@@ -299,13 +299,12 @@ body {
     cursor: pointer;
     width: 24px;
     padding: 12px;
-    opacity: 0;
+    opacity: 1;
     transition: opacity, transform, 300ms ease;
-    flex-shrink: 0;
 }
 
 .trashButton:hover {
-    opacity: 1;
+    opacity: 0.45;
 }
 
 .trashButton:active {
@@ -382,10 +381,6 @@ body {
     .infoFrame {
         align-items: center;
     }
-
-    .trashButton {
-        opacity: 1;
-    }
 }
 
 /* ─── Mobile piccolo ─── */
@@ -416,4 +411,35 @@ body {
     .createdAt {
         display: none;
     }
+
+    .prioritySelector{
+        border-left: none;
+    }
+
+    .addNewTaskContainer{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .bottomButtonsContainer{
+        justify-content: center;
+    }
+    
+    .simpleButton{
+        font-size: 10px;
+    }
+
+    .priorityPillHIGH
+    .priorityPillMEDIUM,
+    .priorityPillLOW,
+    .createdAt,
+    .dragIcon{
+        display:  none;
+    }
+
+    .trashButton{
+        padding: 4px;
+        width: 12px;
+    }
+
 }

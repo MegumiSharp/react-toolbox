@@ -19,13 +19,11 @@ function CopyColor({ hsl, hex, hue, saturation, lightness, onSave, onCopy}: Prop
         <div className={styles.color_selector_container}>
             <div className={styles.color_picker_title}>Selected Color</div>
 
-            <div className={styles.color_selected_container}>
-                <button
-                    onClick={onSave}
-                    className={styles.color_selected_button}
-                    style={{ background: `${hsl}` }}
-                />
-            </div>
+            <button
+                onClick={onSave}
+                className={styles.color_selected_button}
+                style={{ background: `${hsl}` }}
+            />
 
             <div className={styles.panel}>
 

@@ -9,6 +9,15 @@ New tools are added continuously as they get built.
 
 website demo on vercel: https://react-toolbox-green.vercel.app/
 
+
+## Known Bugs
+
+This project was built primarily as a React learning exercise. While the app is viewable on mobile and responsiveness was considered, development started in desktop-first mode — which led to some unintended behavior on smaller screens. Certain features rely on packages like dnd-kit that require additional configuration to support touch events, and due to time constraints these will likely remain unaddressed. Known mobile limitations:
+
+- Color picker drag not supported
+- To-do list drag-and-drop not supported
+- Delete Saved Colors on Color Picker Page
+
 ## Documentation
 
 In-depth implementation notes for the most interesting components are available in `src/docs`: [Color Picker Component docs](frontend/src/docs/ColorPickerComponent.md)

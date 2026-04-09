@@ -6,7 +6,25 @@ type HeaderProps = {
     title: string;
 };
 
+const pageStorageKeys : Record<string, string> = {
+    'To-Do List Tool':  'taskList',
+    'Cronometro': 'cronometer',
+    'Color Picker Tool': 'savedColors',
+}
+
 function Header({ title }: HeaderProps){
+
+    const handleClearLocalStorage = ()=>{
+        const confirmed = window.confirm(`Sei Sicuro di eliminare i dati salvati della pagina ${title}?`)
+
+        if(!confirmed) return
+
+        console.log(title)
+        console.log(pageStorageKeys[title])
+        localStorage.removeItem(pageStorageKeys[title])
+
+        window.location.reload()
+    }
 
     return(
         <header className={styles.header}>
@@ -21,15 +39,11 @@ function Header({ title }: HeaderProps){
             <div className={styles.titleOptionContainer}>
             <h2 className={styles.headerTitle}>{title} -</h2>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <title>cogwheel</title>
-                <g fill="#F7F7F7" strokeLinejoin="miter" strokeLinecap="butt">
-                    <circle cx="12" cy="12" r="3" fill="none" stroke="#F7F7F7" strokeLinecap="square" strokeMiterlimit="10" strokeWidth="2">
-                    </circle>
-                    <path d="m22,13.25v-2.5l-2.318-.966c-.167-.581-.395-1.135-.682-1.654l.954-2.318-1.768-1.768-2.318.954c-.518-.287-1.073-.515-1.654-.682l-.966-2.318h-2.5l-.966,2.318c-.581.167-1.135.395-1.654.682l-2.318-.954-1.768,1.768.954,2.318c-.287.518-.515,1.073-.682,1.654l-2.318.966v2.5l2.318.966c.167.581.395,1.135.682,1.654l-.954,2.318,1.768,1.768,2.318-.954c.518.287,1.073.515,1.654.682l.966,2.318h2.5l.966-2.318c.581-.167,1.135-.395,1.654-.682l2.318.954,1.768-1.768-.954-2.318c.287-.518.515-1.073.682-1.654l2.318-.966Z" fill="none" stroke="#F7F7F7" strokeLinecap="square" strokeMiterlimit="10" strokeWidth="2">
-                    </path>
-                </g>
-            </svg>
+                <button className={styles.clearLocalStorageBtn} onClick={handleClearLocalStorage}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <title>cookie</title><g fill="#F7F7F7"><circle cx="12.25" cy="1.75" r=".75" fill="#F7F7F7"></circle><circle cx="14.75" cy="4.25" r=".75" fill="#F7F7F7"></circle><path d="M16.87,7.599c-.039-.222-.176-.415-.373-.524-.197-.109-.433-.125-.642-.042-.363,.144-.735,.217-1.105,.217-1.498,0-2.77-1.128-2.958-2.624-.051-.403-.409-.688-.818-.652l-.224,.026c-1.209,0-2.193-.951-2.239-2.165-.008-.216-.109-.418-.277-.554-.168-.137-.386-.193-.6-.157C3.79,1.788,1,5.1,1,9c0,4.411,3.589,8,8,8s8-3.589,8-8c0-.451-.042-.909-.13-1.401Zm-9.87-1.599c.552,0,1,.448,1,1s-.448,1-1,1-1-.448-1-1,.448-1,1-1Zm.25,6.5c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25,1.25,.56,1.25,1.25-.56,1.25-1.25,1.25Zm4,0c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75,.75,.336,.75,.75-.336,.75-.75,.75Z" fill="#F7F7F7"></path></g>
+                    </svg>
+                </button>
             </div>
 
         </header>

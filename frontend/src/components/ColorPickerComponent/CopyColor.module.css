@@ -15,13 +15,15 @@
 
 
 .color_selected_button{
-
-    width: 135px;
-    height: 135px;
-    border-radius: 20px;
-    border: 2px solid #3A323E;
-    transition: opacity 0.2s ease-out,
-                transform 0.15s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 135px;
+  height: 135px;
+  border-radius: 20px;
+  border: 2px solid #3A323E;
+  transition: opacity 0.2s ease-out,
+              transform 0.15s ease-out;
 }
 
 .color_selected_button:hover{
@@ -37,7 +39,7 @@
     color: white;
     content: '+';
     font-size: 40px;
-    opacity: 0;  /* nascosto di default */
+    opacity: 0; 
     transition: opacity 0.2s ease-out;
 }
 
@@ -47,16 +49,6 @@
 }
 
 
-
-/* Frame 331 */
-.color_selected_container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 16px 32px 32px 32px;
-    gap: 10px;
-
-}
 
 
 
