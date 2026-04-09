@@ -424,12 +424,12 @@ body {
     .bottomButtonsContainer{
         justify-content: center;
     }
-    
+
     .simpleButton{
         font-size: 10px;
     }
 
-    .priorityPillHIGH
+    .priorityPillHIGH,
     .priorityPillMEDIUM,
     .priorityPillLOW,
     .createdAt,
